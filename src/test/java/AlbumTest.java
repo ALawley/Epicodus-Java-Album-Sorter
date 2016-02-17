@@ -25,4 +25,10 @@ public class AlbumTest {
     Album myAlbum = new Album("The Grey");
     assertEquals(Album.all().size(), myAlbum.getId());
   }
+  @Test
+  public void find_returnsAlbumWithSameID_secondAlbum() {
+    Album firstAlbum = new Album("The Grey");
+    Album secondAlbum = new Album("Pale Folklore");
+    assertEquals(Album.find(secondAlbum.getId()), secondAlbum);
+  }
 }

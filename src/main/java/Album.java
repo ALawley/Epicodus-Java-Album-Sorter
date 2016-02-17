@@ -22,4 +22,13 @@ public class Album {
   public int getId() {
     return mId;
   }
+
+  public static Album find(int id) {
+    try {
+      return albums.get(id - 1);
+    } catch (IndexOutOfBoundsException e) {
+      return null;
+    }
+  }
+
 }
