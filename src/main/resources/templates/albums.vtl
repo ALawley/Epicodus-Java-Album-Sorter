@@ -1,0 +1,7 @@
+<h1>All albums</h1>
+<ul>
+#foreach ($album in $albums)
+  <a href="/albums/$album.getId()">$album.getTitle()</a>
+#end
+</ul>
+<a href="/albums/new">Add New Album</a>
