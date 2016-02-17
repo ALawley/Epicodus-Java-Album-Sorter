@@ -30,4 +30,8 @@ public class Artist {
       return null;
     }
   }
+
+  public static void clear() {
+    artists.clear();
+  }
 }

@@ -3,6 +3,9 @@ import static org.junit.Assert.*;
 
 public class ArtistTest {
 
+  @Rule
+  public ClearRule clearRule = new ClearRule();
+
   @Test
   public void artist_InstantiatesCorrectly_true() {
     Artist myArtist = new Artist("Agalloch");
@@ -30,6 +33,16 @@ public class ArtistTest {
     Artist firstArtist = new Artist("Agalloch");
     Artist secondArtist = new Artist("Stepdad");
     assertEquals(Artist.find(secondArtist.getId()), secondArtist);
+  }
+  @Test
+  public void find_returnsNullWhenNoArtistFound_null() {
+    assertTrue(Artist.find(999) == null);
+  }
+  @Test
+  public void clear_emptiesAllArtistsFromArrayList() {
+    Artist myArtist = new Artist("Agalloch");
+    Artist.clear();
+    assertEquals(Artist.all().size(), 0);
   }
 
 }
