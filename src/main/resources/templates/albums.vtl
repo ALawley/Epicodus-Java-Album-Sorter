@@ -5,3 +5,11 @@
 #end
 </ul>
 <a href="/albums/new">Add New Album</a>
+
+<h1>All artists</h1>
+<ul>
+#foreach ($artist in $artists)
+  <a href="/artists/$artist.getId()">$artist.getName()</a>
+#end
+</ul>
+<a href="/artists/new">Add New Artist</a>
