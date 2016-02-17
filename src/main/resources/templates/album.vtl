@@ -1,8 +1,23 @@
 #if ($album)
   <h1>$album.getTitle()</h1>
+  #if ($album.getArtist())
+    <h3>$album.getArtist()</h3>
+  #end
+  <h3>Assign an artist:</h3>
+  <form action='artist-assign' method='post'>
+    <div class="form-group">
+     <label for="artist">Select artist to assign to album:</label>
+     <select name="artist" id="artist">
+       #foreach ($artist in $artists)
+       <option value="$artist.getName()">$artist.getName()</option>
+       #end
+     </select>
+     <button type="submit" class="btn btn-success">Assign artist</button>
+   </div>
+ </form>
 #else
   <h1>Album not found</h1>
 #end
 
 <a href="/albums/new">Add another album</a>
-<a href="/albums">All albums</a>
+<a href="/albums">All artists and albums</a>

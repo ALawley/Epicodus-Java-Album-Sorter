@@ -41,7 +41,10 @@ public class App {
     get("/albums/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
 
-      Album album = Album.find(Integer.parseInt(request.params(":id")));
+      int activeAlbum = Integer.parseInt(request.params(":id"));
+      Album album = Album.find(activeAlbum);
+      request.session().attribute("activeAlbum", activeAlbum);
+      model.put("artists", Artist.all());
       model.put("album", album);
       model.put("template", "templates/album.vtl");
       return new ModelAndView(model, layout);
@@ -66,6 +69,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String description = request.queryParams("title");
       Artist newArtist = new Artist(description);
+      model.put("albums", Album.all());
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -74,8 +78,18 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
 
       Artist artist = Artist.find(Integer.parseInt(request.params(":id")));
+      model.put("albums", Album.all());
       model.put("artist", artist);
       model.put("template", "templates/artist.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("albums/artist-assign", (request,response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      String artist = request.queryParams("artist");
+      int activeAlbum = request.session().attribute("activeAlbum");
+      Album.find(activeAlbum).addArtist(artist);
+      model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
