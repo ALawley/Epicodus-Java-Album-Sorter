@@ -20,6 +20,16 @@ public class ArtistTest {
     assertTrue(Artist.all().contains(firstArtist));
     assertTrue(Artist.all().contains(secondArtist));
   }
-
+  @Test
+  public void getID_artistsInstantiateWithID_true() {
+    Artist myArtist = new Artist("Agalloch");
+    assertEquals(Artist.all().size(), myArtist.getId());
+  }
+  @Test
+  public void find_returnsArtistWithSameID_secondArtist() {
+    Artist firstArtist = new Artist("Agalloch");
+    Artist secondArtist = new Artist("Stepdad");
+    assertEquals(Artist.find(secondArtist.getId()), secondArtist);
+  }
 
 }
