@@ -13,6 +13,13 @@ public class ArtistTest {
     Artist myArtist = new Artist("Agalloch");
     assertEquals("Agalloch", myArtist.getName());
   }
+  @Test
+  public void allArtists_returnsAllInstancesOfArtist_true() {
+    Artist firstArtist = new Artist("Agalloch");
+    Artist secondArtist = new Artist("Stepdad");
+    assertTrue(Artist.all().contains(firstArtist));
+    assertTrue(Artist.all().contains(secondArtist));
+  }
 
 
 }
