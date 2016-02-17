@@ -30,5 +30,7 @@ public class Album {
       return null;
     }
   }
-
+  public static void clear() {
+    albums.clear();
+  }
 }

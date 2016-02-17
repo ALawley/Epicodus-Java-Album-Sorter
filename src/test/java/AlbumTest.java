@@ -3,6 +3,9 @@ import static org.junit.Assert.*;
 
 public class AlbumTest {
 
+  @Rule
+  public ClearRule clearRule = new ClearRule();
+  
   @Test
   public void album_InstantiatesCorrectly_true() {
     Album myAlbum = new Album("The Mantle");
@@ -30,5 +33,15 @@ public class AlbumTest {
     Album firstAlbum = new Album("The Grey");
     Album secondAlbum = new Album("Pale Folklore");
     assertEquals(Album.find(secondAlbum.getId()), secondAlbum);
+  }
+  @Test
+  public void find_returnsNullWhenNoAlbumFound_null() {
+    assertTrue(Album.find(999) == null);
+  }
+  @Test
+  public void clear_emptiesAllAlbumsFromArrayList() {
+    Album myAlbum = new Album("The Grey");
+    Album.clear();
+    assertEquals(Album.all().size(), 0);
   }
 }
