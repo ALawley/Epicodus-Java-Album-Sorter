@@ -1,7 +1,7 @@
 <h1>All albums</h1>
 <ul>
 #foreach ($album in $albums)
-  <a href="/albums/$album.getId()">$album.getTitle()</a>
+  <li><a href="/albums/$album.getId()">$album.getTitle()</a></li>
 #end
 </ul>
 <a href="/albums/new">Add New Album</a>
@@ -9,7 +9,7 @@
 <h1>All artists</h1>
 <ul>
 #foreach ($artist in $artists)
-  <a href="/artists/$artist.getId()">$artist.getName()</a>
+  <li><a href="/artists/$artist.getId()">$artist.getName()</a></li>
 #end
 </ul>
 <a href="/artists/new">Add New Artist</a>
