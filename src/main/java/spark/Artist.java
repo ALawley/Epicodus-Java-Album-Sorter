@@ -22,4 +22,12 @@ public class Artist {
   public int getId() {
     return mId;
   }
+
+  public static Artist find(int id) {
+    try {
+      return artists.get(id - 1);
+    } catch (IndexOutOfBoundsException e) {
+      return null;
+    }
+  }
 }
