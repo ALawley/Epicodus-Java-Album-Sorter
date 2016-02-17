@@ -4,6 +4,7 @@ public class Album {
   private static ArrayList<Album> albums = new ArrayList<Album>();
   private String mTitle;
   private int mId;
+  private String mArtist;
 
   public Album(String title) {
     mTitle = title;
@@ -32,5 +33,11 @@ public class Album {
   }
   public static void clear() {
     albums.clear();
+  }
+  public void addArtist(String artist) {
+    mArtist = artist;
+  }
+  public String getArtist() {
+    return mArtist;
   }
 }

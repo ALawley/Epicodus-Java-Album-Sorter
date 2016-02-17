@@ -5,7 +5,7 @@ public class AlbumTest {
 
   @Rule
   public ClearRule clearRule = new ClearRule();
-  
+
   @Test
   public void album_InstantiatesCorrectly_true() {
     Album myAlbum = new Album("The Mantle");
@@ -43,5 +43,11 @@ public class AlbumTest {
     Album myAlbum = new Album("The Grey");
     Album.clear();
     assertEquals(Album.all().size(), 0);
+  }
+  @Test
+  public void addArtist_addsArtistForAlbum_true() {
+    Album myAlbum = new Album("The Grey");
+    myAlbum.addArtist("Agalloch");
+    assertEquals("Agalloch", myAlbum.getArtist());
   }
 }
