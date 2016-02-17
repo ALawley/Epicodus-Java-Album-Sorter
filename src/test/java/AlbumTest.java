@@ -4,7 +4,12 @@ import static org.junit.Assert.*;
 public class AlbumTest {
 
   @Test
-  public void method_input_result() {
-    // eventually put your testing code here
+  public void album_InstantiatesCorrectly_true() {
+    Album myAlbum = new Album("The Mantle");
+    assertEquals(true, myAlbum instanceof Album);
+  }
+  public void album_instantiatesWithTitle_true() {
+    Album myAlbum = new Album("The Mantle");
+    assertEquals("The Mantle", myAlbum.getTitle());
   }
 }
